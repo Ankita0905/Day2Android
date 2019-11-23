@@ -5,15 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class FirstActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtName;
     private Button btnNext;
+    private ToggleButton btnToggle;
+    private TextView txtColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +27,25 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_first);
         edtName=findViewById(R.id.edtName);
         btnNext=findViewById(R.id.btnNext);
+        txtColor=findViewById(R.id.txtColor);
         btnNext.setOnClickListener(this);
+        btnToggle=findViewById(R.id.btnStatus);
+        btnToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
+              if(b)
+              {
+                  txtColor.setBackgroundColor(Color.CYAN);
+                  txtColor.setTextColor(Color.BLUE);
+              }
+              else
+              {
+                  txtColor.setBackgroundColor(Color.YELLOW);
+                  txtColor.setTextColor(Color.RED);
+              }
+            }
+        });
     }
 
     @Override
