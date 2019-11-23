@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -20,6 +21,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     private Button btnNext;
     private ToggleButton btnToggle;
     private TextView txtColor;
+    private Switch rememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +31,39 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         btnNext=findViewById(R.id.btnNext);
         txtColor=findViewById(R.id.txtColor);
         btnNext.setOnClickListener(this);
+        rememberMe=findViewById(R.id.rememberMe);
         btnToggle=findViewById(R.id.btnStatus);
+        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
+                if(rememberMe.isChecked())
+                {
+                    edtName.setText(edtName.getText().toString().toLowerCase());
+                    txtColor.setBackgroundColor(Color.CYAN);
+                    txtColor.setTextColor(Color.BLUE);
+                }
+                else
+                {
+                    edtName.setText(edtName.getText().toString().toUpperCase());
+                    txtColor.setBackgroundColor(Color.YELLOW);
+                    txtColor.setTextColor(Color.RED);
+                }
+            }
+        });
         btnToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b)
             {
-              if(b)
+              if(btnToggle.isChecked())
               {
+                  edtName.setText(edtName.getText().toString().toLowerCase());
                   txtColor.setBackgroundColor(Color.CYAN);
                   txtColor.setTextColor(Color.BLUE);
               }
               else
               {
+                  edtName.setText(edtName.getText().toString().toUpperCase());
                   txtColor.setBackgroundColor(Color.YELLOW);
                   txtColor.setTextColor(Color.RED);
               }

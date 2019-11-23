@@ -66,4 +66,21 @@
         app:layout_constraintStart_toEndOf="@+id/btnStatus"
         app:layout_constraintTop_toBottomOf="@+id/btnNext"
         app:layout_constraintVertical_bias="0.787" />
+
+    <Switch
+        android:id="@+id/rememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:checked="true"
+        android:layoutDirection="rtl"
+        android:text="Remember Me "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:thumbTint="#00E90B0B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStatus" />
 </androidx.constraintlayout.widget.ConstraintLayout>
